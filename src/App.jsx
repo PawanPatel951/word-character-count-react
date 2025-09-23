@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import Counter from './Counter'
+import Nav from './Nav'
 
 function App() {
   
 
   return (
     <>
+    <Nav />
     <div className='container my-3'>
     <Counter  heading="Enter the test to analyze"/>
   
