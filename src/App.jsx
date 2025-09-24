@@ -1,18 +1,58 @@
 import { useState } from 'react'
-import Counter from './Counter'
+import TextForm from './TextForm'
 import Nav from './Nav'
+import Alert from './Alert'
+import About from './About'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
-  
+  const [mode, setMode] = useState('light')
+  const [alert , setAlert] = useState(null)
+
+  const showAlert = (message,type)=>{
+    setAlert({
+      msg: message,
+      type: type
+    })
+    setTimeout(() => {
+      setAlert(null);
+    }, 1500);
+  }
+
+  const toggleMode =()=>{
+    if(mode==='light'){
+      setMode('dark')
+      document.body.style.backgroundColor = "#042743";
+      showAlert("Dark mode has been enabled","success ")
+      document.title ="TextUtils - Dark Mode";
+      
+      // setInterval(() => { 
+      // document.title ="TextUtils is Amazing Mode"; 
+      // }, 2000); 
+
+       // setInterval(() => { 
+       // document.title ="Install TextUtils Now";
+       //  }, 1500);
+    }
+    else{
+      setMode('light')
+      document.body.style.backgroundColor = "white";
+      showAlert("Light mode has been enabled","success ")
+      document.title ="TextUtils - Light Mode";
+    }
+  }
 
   return (
-    <>
-    <Nav />
-    <div className='container my-3'>
-    <Counter  heading="Enter the test to analyze"/>
-  
-  </div>
-    </>
+    <Router>
+      <Nav mode={mode} toggleMode={toggleMode}/>
+      <Alert alert={alert}/>
+      <div className='container my-3'>
+        <Routes>
+          <Route path="/about" element={<About />} />
+          <Route path="/" element={<TextForm heading="Enter the text to analyze" showAlert={showAlert} mode={mode}/>} />
+        </Routes>
+      </div>
+    </Router>
   )
 }
 
