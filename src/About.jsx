@@ -1,38 +1,23 @@
 import React, { useState } from "react";
 
-export default function About() {
-  const [myStyle, setMyStyle] = useState({
-    color: "white",
-    backgroundColor: "black",
-  });
+export default function About(props) {
+  // const [myStyle, setMyStyle] = useState({
+  
+  // });
 
-  const [btnText, setBtnText] = useState("Enable Dark Mode");
-
-  const toggleStyle = () => {
-    if (myStyle.color === "white") {
-      setMyStyle({
-        color: "black",
-        backgroundColor: "white",
-        border:"1px solid white",
-      });
-      setBtnText("Enable Light Mode");
-    } else {
-      setMyStyle({
-        color: "white",
-        backgroundColor: "black",
-      });
-      setBtnText("Enable Dark Mode");
-    }
-  };
+  let myStyle ={
+    color:props.mode ==='dark'?'white':'#042743',
+    backgroundColor: props.mode ==='dark'?'rgb(36 74 104)':'white',
+  }
+  
 
   return (
     <div className="container my-5" style={myStyle}>
-      <h1>About Us</h1>
+      <h1 className="my-3" style={{color:props.mode ==='dark'?'white':'#042743'}}>About Us</h1>
       <p>Welcome to our company! Learn more about us below:</p>
 
-      {/* Accordion */}
       <div className="accordion" id="aboutAccordion">
-        {/* Company */}
+     
         <div className="accordion-item">
           <h2 className="accordion-header" id="headingCompany">
             <button
@@ -44,7 +29,7 @@ export default function About() {
               aria-expanded="true"
               aria-controls="collapseCompany"
             >
-              Company
+             <strong> Analyze Your text</strong>
             </button>
           </h2>
           <div
@@ -54,8 +39,8 @@ export default function About() {
             data-bs-parent="#aboutAccordion"
           >
             <div className="accordion-body" style={myStyle}>
-              We are a leading company in the tech industry, providing high-quality services worldwide.
-            </div>
+             Textutils gives you a way to analyze your text quickly and efficiently. Be it word count, character count or
+             </div>
           </div>
         </div>
 
@@ -71,7 +56,7 @@ export default function About() {
               aria-expanded="false"
               aria-controls="collapseTeam"
             >
-              Team
+            <strong> Free to use </strong>
             </button>
           </h2>
           <div
@@ -81,8 +66,10 @@ export default function About() {
             data-bs-parent="#aboutAccordion"
           >
             <div className="accordion-body" style={myStyle}>
-              Our team consists of experienced professionals who are passionate about technology and innovation.
-            </div>
+                TextUtils is a free character counter tool that provides instant character count & word count statistics for a given
+                text. TextUtils reports the number of words and characters. Thus it is suitable for writing text with word/ character
+                limit.
+                </div>
           </div>
         </div>
 
@@ -98,7 +85,7 @@ export default function About() {
               aria-expanded="false"
               aria-controls="collapseCareers"
             >
-              Careers
+            <strong> Browser Compatible</strong>
             </button>
           </h2>
           <div
@@ -108,18 +95,14 @@ export default function About() {
             data-bs-parent="#aboutAccordion"
           >
             <div className="accordion-body" style={myStyle}>
-              Join our team! Check out open positions and grow your career with us.
-            </div>
+                This word counter software works in any web browsers such as Chrome, Firefox, Internet Explorer, Safari, Opera. It
+                suits to count characters in facebook, blog, books, excel document, pdf document, essays, etc.
+                </div>
           </div>
         </div>
       </div>
 
-      {/* Toggle Button */}
-      <div className="container my-3">
-        <button type="button" onClick={toggleStyle} className="btn btn-primary">
-          {btnText} {/* ✅ dynamic button text */}
-        </button>
-      </div>
+    
     </div>
   );
 }

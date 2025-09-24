@@ -25,7 +25,7 @@ function App() {
       document.body.style.backgroundColor = "#042743";
       showAlert("Dark mode has been enabled","success ")
       document.title ="TextUtils - Dark Mode";
-      
+
       // setInterval(() => { 
       // document.title ="TextUtils is Amazing Mode"; 
       // }, 2000); 
@@ -48,8 +48,8 @@ function App() {
       <Alert alert={alert}/>
       <div className='container my-3'>
         <Routes>
-          <Route path="/about" element={<About />} />
-          <Route path="/" element={<TextForm heading="Enter the text to analyze" showAlert={showAlert} mode={mode}/>} />
+          <Route path="/about" element={<About mode={mode} />} />
+          <Route path="/" element={<TextForm heading="Try TextUtils - Word Counter, Character Counter, Remove extra spaces " showAlert={showAlert} mode={mode}/>} />
         </Routes>
       </div>
     </Router>
