@@ -34,16 +34,39 @@ export default function TextForm(props){
     
     return (
         <>
-        <div style={{color:props.mode==='dark'?'white':'black'}}>
-            <h1>{props.heading}-</h1>
-            <div className="mb-3">
-            <textarea className="form-control" style={{backgroundColor:props.mode==='dark'?'grey':'white', color:props.mode==='dark'?'white':'black'}} value={text} onChange={handleOnChange} id="mybox" rows="8"></textarea>
-            </div>
-            <button className="btn btn-primary mx-4" onClick={handleUpClick}>Convert to Uppercase</button>
-            <button className="btn btn-primary " onClick={handleLoClick}>Convert to Lowercase</button>
-            <button className="btn btn-primary mx-4" onClick={handleClear}>Clear Text</button>
-            <button className="btn btn-primary mx-4" onClick={handleRemovSpace}>Remove Extra Space</button>
-        </div>
+        <div style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
+  <h1>{props.heading}-</h1>
+  <div className="mb-3">
+    <textarea
+      className="form-control"
+      style={{
+        backgroundColor: props.mode === 'dark' ? 'grey' : 'white',
+        color: props.mode === 'dark' ? 'white' : 'black',
+      }}
+      value={text}
+      onChange={handleOnChange}
+      id="mybox"
+      rows="8"
+    ></textarea>
+  </div>
+
+  {/* Responsive button container */}
+  <div className="d-flex flex-wrap gap-2">
+    <button className="btn btn-primary" onClick={handleUpClick}>
+      Convert to Uppercase
+    </button>
+    <button className="btn btn-primary" onClick={handleLoClick}>
+      Convert to Lowercase
+    </button>
+    <button className="btn btn-primary" onClick={handleClear}>
+      Clear Text
+    </button>
+    <button className="btn btn-primary" onClick={handleRemovSpace}>
+      Remove Extra Space
+    </button>
+  </div>
+</div>
+
         <div className='container my-3'  style={{color:props.mode==='dark'?'white':'black'}}>
             <h1>Your text summary</h1>
             <p>{text.split(" ").length} words and {text.length} characters</p>
